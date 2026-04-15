@@ -1,0 +1,27 @@
+form label{
+    display:block;
+    font-size: 20px;
+    margin: 0 0 5px;
+    font-family: cursive;
+}
+.input_texto{
+    display: block;
+    width: 50%;
+    margin: 0 0 20px;
+    padding: 10px 0;
+}
+
+.btn.enviar{
+    width: 50%;
+    padding: 15px 0;
+    background-color: azure;
+    color: rgb(148, 147, 146);
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+}
+.btn.enviar:hover{
+    background-color: aliceblue;
+    transform: scale(1.1);
+}
