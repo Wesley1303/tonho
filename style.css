@@ -1,27 +1,68 @@
-form label{
-    display:block;
-    font-size: 20px;
-    margin: 0 0 5px;
-    font-family: cursive;
-}
-.input_texto{
-    display: block;
-    width: 50%;
-    margin: 0 0 20px;
-    padding: 10px 0;
+/* Reseta margens e define uma fonte moderna */
+body {
+    font-family: sans-serif;
+    background-color: #4e07a0;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
-.btn.enviar{
-    width: 50%;
-    padding: 15px 0;
-    background-color: azure;
-    color: rgb(148, 147, 146);
-    font-weight: bold;
-    font-size: 16px;
-    border: none;
-    border-radius: 30px;
+/* Estiliza o container principal como um "card" */
+main {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    width: 90%;
+    max-width: 380px;
 }
-.btn.enviar:hover{
-    background-color: aliceblue;
-    transform: scale(1.1);
+
+h1 {
+    color: #333;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Organiza os campos um embaixo do outro */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #666;
+    margin-bottom: -8px; /* Aproxima a label do input */
+}
+
+input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+}
+
+/* Efeito azul suave ao clicar no campo */
+input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+}
+
+/* Botão de destaque */
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
 }
