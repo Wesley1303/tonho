@@ -5,30 +5,95 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="style.css"rel="stylesheet">
 <title>Cadastro</title>
+
+
+<script>
+function pesquisarCEP(cep) {
+// Remove caracteres não numéricos
+cep = cep.replace(/\D/g, '');
+const erroDisplay = document.getElementById("mensagem_erro");
+erroDisplay.textContent = "";
+
+if (cep !== "") {
+var validacep = /^[0-9]{8}$/;
+
+if(validacep.test(cep)) {
+// Preenche com "..." enquanto carrega
+document.getElementById("rua").value = "...";
+document.getElementById("bairro").value = "...";
+document.getElementById("cidade").value = "...";
+document.getElementById("estado").value = "...";
+
+// Cria o elemento script para a requisição JSONP
+const link = 'https://viacep.com.br/&#39; + cep + '/json/?callback=preencherEndereco';
+var script = document.createElement("script");
+script.src = link;
+document.body.appendChild(script);
+} else {
+erroDisplay.textContent = "Formato de CEP inválido.";
+}
+}
+}
+
+function preencherEndereco(conteudo) {
+if (!("erro" in conteudo)) {
+document.getElementById("rua").value = conteudo.logradouro;
+document.getElementById("bairro").value = conteudo.bairro;
+document.getElementById("cidade").value = conteudo.localidade;
+document.getElementById("estado").value = conteudo.uf;
+} else {
+document.getElementById("mensagem_erro").textContent = "CEP não encontrado.";
+limparCamposEndereco();
+}
+}
+
+function limparCamposEndereco() {
+document.getElementById("rua").value = "";
+document.getElementById("bairro").value = "";
+document.getElementById("cidade").value = "";
+document.getElementById("estado").value = "";
+}
+</script>
 </head>
 <body>
-<header>
-
-</header>
 <main>
-        <h1>Cadastro de Clientes</h1>
-        <form>
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" required>
-            <label for="cpf">CPF:</label>
-            <input type="text" id="cpf" required>
-            <label for="dt_nasc">Data de nascimento:</label>
-            <input type="date" id="dt_nasc" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" required>
-            <label for="celular">Celular:</label>
-            <input type="tel" id="celular" placeholder="(99) 99999-9999">
+<h1>Cadastro de Clientes</h1>
+<form>
+<label for="nome">Nome:</label>
+<input type="text" id="nome" required>
 
-            <input type="submit" value="Enviar cadastro">
-    </form>
+<label for="cpf">CPF:</label>
+<input type="text" id="cpf" placeholder="000.000.000-00" required>
+
+<label for="dt_nasc">Data de nascimento:</label>
+<input type="date" id="dt_nasc" required class="input_texto">
+
+<label for="email">Email:</label>
+<input type="email" id="email" required>
+
+<label for="celular">Celular:</label>
+<input type="tel" id="celular" placeholder="(99) 99999-9999" required class="input_texto">
+
+<label for="cep">CEP:</label>
+<input type="text" id="cep" placeholder="00000-000" required
+onblur="pesquisarCEP(this.value)">
+<span id="mensagem_erro"></span>
+
+<label for="rua">Rua:</label>
+<input type="text" id="rua" required>
+
+<label for="bairro">Bairro:</label>
+<input type="text" id="bairro" required>
+
+<label for="cidade">Cidade:</label>
+<input type="text" id="cidade" required>
+
+<label for="estado">Estado (UF):</label>
+<input type="text" id="estado" required>
+
+<input type="submit" value="Enviar cadastro" class="btn_enviar">
+</form>
 </main>
-<footer>
-
-</footer>
 </body>
 </html>
+
