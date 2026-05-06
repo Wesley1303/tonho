@@ -1,68 +1,108 @@
-/* Reseta margens e define uma fonte moderna */
 body {
-    font-family: sans-serif;
-    background-color: #4e07a0;
-    display: grid;
-    place-items: center;
-    min-height: 100vh;
+    background-color: #f0f2f5;
+    font-family: 'Inter', sans-serif;
     margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Estiliza o container principal como um "card" */
-main {
-    background: white;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    width: 90%;
-    max-width: 380px;
+.container {
+    background-color: #ffffff;
+    max-width: 500px;
+    width: 100%;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
 h1 {
-    color: #333;
+    color: #1a1a1a;
     text-align: center;
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 24px;
+    margin-bottom: 30px;
+    font-weight: 600;
 }
 
-/* Organiza os campos um embaixo do outro */
 form {
     display: flex;
     flex-direction: column;
-    gap: 12px;
 }
 
 label {
-    font-size: 0.9rem;
+    font-size: 14px;
     font-weight: 600;
-    color: #666;
-    margin-bottom: -8px; /* Aproxima a label do input */
+    color: #4b5563;
+    margin-bottom: 6px;
+    margin-top: 16px;
 }
 
-input {
-    padding: 12px;
-    border: 1px solid #ddd;
+/* Estilo para todos os campos de entrada */
+.input_texto, 
+input[type="text"], 
+input[type="email"], 
+input[type="date"], 
+input[type="tel"], 
+input[type="password"] {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #d1d5db;
     border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
     outline: none;
-    transition: 0.3s;
+    color: #1f2937;
 }
 
-/* Efeito azul suave ao clicar no campo */
+/* Efeito de foco (quando clica no campo) */
+.input_texto:focus, 
 input:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
 }
 
-/* Botão de destaque */
-input[type="submit"] {
-    background-color: #007bff;
+/* Estilo do separador */
+hr {
+    border: 0;
+    border-top: 1px solid #e5e7eb;
+    margin: 30px 0 10px 0;
+}
+
+/* Mensagem de erro/status do CEP */
+#mensagem_erro {
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+    min-height: 15px;
+}
+
+/* Botão de envio profissional */
+.btn_enviar {
+    background-color: #2563eb;
     color: white;
     border: none;
-    font-weight: bold;
-    margin-top: 10px;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
+    margin-top: 30px;
+    transition: background-color 0.2s;
 }
 
-input[type="submit"]:hover {
-    background-color: #0056b3;
+.btn_enviar:hover {
+    background-color: #1d4ed8;
+}
+
+/* Responsividade para celulares */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 20px;
+    }
 }
